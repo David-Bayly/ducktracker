@@ -4,7 +4,8 @@
   "description": "Duck Tracker is an application used for gathering data about the feeding time,location,number etc. of ducks. This was written as part of Freshworks selection process. ",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
