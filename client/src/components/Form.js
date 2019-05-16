@@ -4,11 +4,19 @@ class Form extends Component{
   constructor(props) {
   	super(props);
   }
+  // submitForm(){
+  // 	console.log("Form Submitted!");
+  // }
   render(){
   	return(
-  	<form>
-  		<input type="submit"/>
-  	</form>
+  	<div>
+  		<form onSubmit={event =>{
+  			event.preventDefault();
+  			this.props.submitForm();
+  		}}>
+  			<button type="submit">Submit</button>
+  		</form>
+  	</div>
   	);
   }
 }
