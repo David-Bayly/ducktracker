@@ -6,7 +6,7 @@ class Form extends Component{
   // }
   submitForm(event){
   	console.log("Form Submitted!");
-  	console.log(event.target.elements);
+  	//console.log(event.target.elements);
   }
   render(){
   	return(

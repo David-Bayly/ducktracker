@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+ import React, {Component} from 'react';
 
 class FoodEntry extends Component{
   // constructor(props) {
@@ -9,8 +9,8 @@ class FoodEntry extends Component{
   }
   render(){
   	return(
-  	<div>
-      <span>Food Entry!</span>
+  	<div className="foodentry">
+      <span>{this.props.keyvalue}</span>
   	</div>
   	);
   }
