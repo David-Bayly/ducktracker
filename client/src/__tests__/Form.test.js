@@ -14,15 +14,9 @@ test("calls on submit function when submit button is pressed",()=>{
 	const {getByLabelText, getByText} = render(
 	    <Form submitForm={handleSubmit} />,
 	  )
+	getByLabelText(/feedtime/).value='1:00 pm';
+	getByLabelText(/location/i).value='Victoria';
+	getByLabelText(/quantity/i).value='6';
 	getByText(/submit/i).click();
 	expect(handleSubmit).toHaveBeenCalledTimes(1);
 });
-test("does not allow for submission if there are any empty fields",()=>{
-
-})
-test("saves data when previous and next buttons are pushed",()=>{
-
-})
-test("cycles to the next form element when previous and next buttons are pressed",()=>{
-
-})

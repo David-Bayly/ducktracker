@@ -4,8 +4,8 @@ import Form from "./components/Form"
 function App() {
   return (
     <div className="App">
-    <span>HELLO WORLD</span>
-     
+    <span>Welcome to DuckTracker</span>
+     <Form/>
     </div>
   );
 }

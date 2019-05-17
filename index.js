@@ -10,12 +10,15 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 
-app.get("/",function(req,res){
-	res.render("pages/index")
+app.get("/api/ducks",function(req,res){
+	res.send("TBA");
+});
+app.get("/api/food",function(req,res){
+	res.send("TBA");
 });
 
-app.post("/",function(req,res){
+app.post("/api/save",function(req,res){
 	console.log(req.body);
 	res.send("Post recieved");
 });
-app.listen(process.env.PORT||1337);
+app.listen(process.env.PORT||5000);
