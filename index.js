@@ -11,9 +11,11 @@ app.set("views", "views");
 
 
 app.get("/api/ducks",function(req,res){
+	console.log("ducks");
 	res.send("TBA");
 });
 app.get("/api/food",function(req,res){
+	console.log("food");
 	res.send("TBA");
 });
 

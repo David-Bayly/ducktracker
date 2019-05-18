@@ -33,6 +33,19 @@ class Form extends Component{
   }
   submitForm(event){
   	console.log("Form Submitted!",this.state);
+  	fetch("/api/save",{
+  		method:"POST",
+  		headers:{ 
+  			'Content-Type':'application/json'
+  		},
+  		body:JSON.stringify({
+  			time:this.state.time,
+  			foodEntries:this.state.foodEntries,
+  			location:this.state.location,
+  			quantity:this.state.quantity,
+  			repeat:this.state.repeatDaily
+  		})
+  	}).then(response=>console.log(response));
   }
   render(){
   	return(
