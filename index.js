@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 //Setting up body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'client/build')));
 //Setting up ejs as the view engine. 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -23,8 +25,8 @@ app.post("/api/save",function(req,res){
 	console.log(req.body);
 	res.send("Post recieved");
 });
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/public/index.html'));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 })
 
 
