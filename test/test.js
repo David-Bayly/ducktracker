@@ -21,19 +21,45 @@ describe('Validator',function(){
 		});
 		it("Should return error message if data is invalid",function(){
 			const data={}
-			assert.equal(validator.validateEntry(data),"The following values were not accuratly inputted:time,foodEntries,location,quantity,repeat");
+			assert.equal(validator.validateEntry(data),
+				"Time can't be blank\n"+
+				"Food entries can't be blank\n"+
+				"Quantity can't be blank\n"+
+				"Location can't be blank\n"+
+				"Repeat can't be blank\n"
+				);
 		})
 		it("Should return specific error message based on the kind of invalid input",function(){
 			let data ={}
-			assert.equal(validator.validateEntry(data),"The following values were not accuratly inputted:time,foodEntries,location,quantity,repeat");
+			assert.equal(validator.validateEntry(data),
+				"Time can't be blank\n"+
+				"Food entries can't be blank\n"+
+				"Quantity can't be blank\n"+
+				"Location can't be blank\n"+
+				"Repeat can't be blank\n"
+				);
 			data.time="01:00";
-			assert.equal(validator.validateEntry(data),"The following values were not accuratly inputted:foodEntries,location,quantity,repeat");
+			assert.equal(validator.validateEntry(data),
+				"Food entries can't be blank\n"+
+				"Quantity can't be blank\n"+
+				"Location can't be blank\n"+
+				"Repeat can't be blank\n"
+				);
 		  	data.foodEntries=[ [ 'corn', 1 ], [ 'grains', 1 ], [ 'birdseed', 1 ], [ 'corn', 1 ] ];
-			assert.equal(validator.validateEntry(data),"The following values were not accuratly inputted:location,quantity,repeat");
+			assert.equal(validator.validateEntry(data),
+				"Quantity can't be blank\n"+
+				"Location can't be blank\n"+
+				"Repeat can't be blank\n"
+				);
 			data.location="Seattle";
-			assert.equal(validator.validateEntry(data),"The following values were not accuratly inputted:quantity,repeat");
+			assert.equal(validator.validateEntry(data),
+				"Quantity can't be blank\n"+
+				"Repeat can't be blank\n"
+				);
 			data.quantity='2';
-			assert.equal(validator.validateEntry(data),"The following values were not accuratly inputted:repeat");
+			assert.equal(validator.validateEntry(data),
+				"Repeat can't be blank\n"
+				);
 		})
 	})
 

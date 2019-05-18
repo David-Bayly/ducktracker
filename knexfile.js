@@ -2,7 +2,13 @@ require('dotenv').config();
 module.exports = {
     development: {
         client: 'pg',
-        connection: process.env.DATABASE_URL_LOCAL
+        connection: {
+          host : 'localhost',
+          user : 'postgres',
+          port : process.env.dbport,
+          password : process.env.dbpass,
+          database : 'ducktracker'
+        }
     },
     production: {
         client: 'pg',

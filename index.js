@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 let app = express();
 const bodyParser = require("body-parser");
+let validator=require("valdator.js");
 //Setting up body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,13 +23,13 @@ app.get("/api/food",function(req,res){
 });
 
 app.post("/api/save",function(req,res){
-	console.log(req.body);
-	res.send("Post recieved");
+	let valid = 
 });
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 })
 
 
 
 app.listen(process.env.PORT||5000);
+console.log("Running");
