@@ -4,12 +4,12 @@ import Form from '../components/Form';
 import {render,cleanup,fireEvent,waitForElement,wait} from 'react-testing-library';
 //import {renderIntoDocument,cleanup} from 'react-testing-library'
 afterEach(cleanup);
-it('renders without crashing', () => {
+it('Renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Form />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
-test("calls on submit function when submit button is pressed",()=>{
+test("Calls on submit function when submit button is pressed",()=>{
 	const handleSubmit = jest.fn();
 	const {getByLabelText, getByText} = render(
 	    <Form submitForm={handleSubmit} />,
@@ -40,6 +40,7 @@ test("Can remove food entries after they have been added",()=>{
 	const foodType= getByLabelText("Food Type");
 	const addButton = getByText("Add Food Entry");
 	fireEvent.change(foodType,{target:{value:"corn"}});
+	//Add three food entries. 
 	fireEvent.click(addButton);
 	fireEvent.click(addButton);
 	fireEvent.click(addButton);
@@ -54,3 +55,9 @@ test("Can remove food entries after they have been added",()=>{
 test("Can have multiple different values for food types",()=>{
 
 })
+test("Food entries have a quantity select",()=>{
+
+})
+test("when form is complete, submitForm function returns a properly formatted json object",()=>{
+
+});
