@@ -58,7 +58,23 @@ app.post("/api/save",function(req,res){
 	}
 
 });
+
 app.get("/api/data",function(req,res){
+	let data = [];
+	knex("feedingrecords").select().then(function(logs){
+		knex("feedentries").select().then(function(entries){
+			for(let x in logs){
+				logs[x].entries =[];
+				for(let y in entries){
+					if(logs[x].id===entries[y]["feeding record"]){
+						logs[x].entries.push(entries[y]);
+					}
+				}
+				data.push(logs[x]);
+			}
+			res.send(data);
+		})
+	})
 
 })
 app.get('*', (req, res) => {
