@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import FoodEntry from "./FoodEntry"
+import "./FoodEntries.css"
 class FoodEntries extends Component{
   constructor(props) {
   	super(props);
@@ -39,12 +40,12 @@ class FoodEntries extends Component{
       <label htmlFor="foodtype">Food Type</label>
         <select id="foodtype" name="foodtype" onChange={this.selectType} value={this.state.foodtype||""} default="" required>
           <option value=''></option>
-          <option value="birdseed">Bird Seed</option>
-          <option value="breadcrumbs">Bread Crumbs</option>
-          <option value="grains">Grains</option>
-          <option value="corn">Corn</option>
+          <option value="Bird Seed">Bird Seed</option>
+          <option value="Bread Crumbs">Bread Crumbs</option>
+          <option value="Grains">Grains</option>
+          <option value="Corn">Corn</option>
         </select>
-        <button type="button" onClick={event=>{this.addFoodEntry(event)}}>Add Food Entry</button>
+        <button type="button" className="btn-primary" onClick={event=>{this.addFoodEntry(event)}}>Add Food Entry</button>
         {elements}
   	</div>
   	);

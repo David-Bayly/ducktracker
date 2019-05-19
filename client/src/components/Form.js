@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import FoodEntries from "./form-components/FoodEntries"
+import './Form.css';
 class Form extends Component{
   constructor(props) {
   	super(props);
@@ -7,14 +8,16 @@ class Form extends Component{
   		time:"",
   		foodEntries:[],
   		location:"",
-  		quantity:1,
+  		quantity:1, 
   		repeatDaily:"off",
+      message:"Please enter your data"
   	}
   	this.changeTime=this.changeTime.bind(this);
   	this.changeFoodEntries=this.changeFoodEntries.bind(this);
   	this.changeLocation=this.changeLocation.bind(this);
   	this.changeQuantity=this.changeQuantity.bind(this);
   	this.changeRepeat=this.changeRepeat.bind(this);
+    this.submitForm=this.submitForm.bind(this);
   }
   changeTime(event){
   	this.setState({time:event.target.value});
@@ -32,7 +35,7 @@ class Form extends Component{
   	this.setState({repeatDaily:event.target.value});
   }
   submitForm(event){
-  	console.log("Form Submitted!",this.state);
+    const self = this;
   	fetch("/api/save",{
   		method:"POST",
   		headers:{ 
@@ -45,20 +48,30 @@ class Form extends Component{
   			quantity:this.state.quantity,
   			repeat:this.state.repeatDaily
   		})
-  	}).then(response=>console.log(response));
+  	}).then(res=>res.json().then(function(message){
+      self.setState({message:message.message})
+    }));
+
   }
   render(){
+    let message=[];
+      message.push(
+        <h3 key = "1">{this.state.message}</h3>
+      )
   	return(
-  	<div>
-  		<form onSubmit={event=>{
-  			event.preventDefault();
-  			if(this.props.submitForm!==undefined){
-  				this.props.submitForm();
-  			}else{
-  				this.submitForm(event);
-  			}
-  			
-  		}}>
+  	<div className="inner">
+        <div>
+            {message}
+            </div>
+        		<form onSubmit={event=>{
+        			event.preventDefault();
+        			if(this.props.submitForm!==undefined){
+        				this.props.submitForm();
+        			}else{
+        				this.submitForm(event);
+        			}
+        			
+        		}}>
 	  		<div>
 				<label htmlFor="feedtime">feedtime</label>
 				<input type="time" id="feedtime" onChange={this.changeTime} required/>
@@ -82,7 +95,7 @@ class Form extends Component{
 			<label htmlFor="repeat">Repeat Daily?</label>
 			  <input type="checkbox" id="repeat" name="repeat" onChange={this.changeRepeat}/>
   			</div>
-  			<button type="submit">Submit</button>
+  			<button className="btn btn-primary" type="submit">Submit</button>
   		</form>
   	</div>
   	);

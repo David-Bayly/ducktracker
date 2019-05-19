@@ -1,5 +1,5 @@
  import React, {Component} from 'react';
-
+import "./FoodEntry.css"
 class FoodEntry extends Component{
   constructor(props) {
   	super(props);
@@ -18,9 +18,10 @@ class FoodEntry extends Component{
   	return(
   	<div className="foodentry">
       <span>
-        {this.props.entries[this.props.keyvalue][0]}<br/>
-        <input type="number" onChange={this.update} min="1" value={this.props.entries[this.props.keyvalue][1]}/>
-        Kgs<button type="button" onClick={this.dismiss}>X</button>
+        {this.props.entries[this.props.keyvalue][0]} 
+
+        <input type="number" step="0.1" onChange={this.update} min="0.1" value={this.props.entries[this.props.keyvalue][1]}/>
+        Kgs<button className="btn close" type="button" onClick={this.dismiss}>X</button>
       </span>
   	</div>
   	);

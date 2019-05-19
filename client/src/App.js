@@ -17,8 +17,8 @@ class App extends Component {
 
 	render(){
 	  return (
-	    	<div className="App">
-	    	<span>Welcome to DuckTracker</span>
+	    	<div className="App outer">
+	    	<span><h1 className="title_outer">Welcome to DuckTracker</h1></span>
 	     	<Form/>
 	    	</div>
 	  	);
